@@ -16,6 +16,16 @@ You can test the gem inside the console using
 	$ require 'peng_dp'
 	$ ...
 
+For rice functionality
+
+	ridk enable
+	ruby extconf.rb
+	make
+
+To run a ruby file
+
+	ruby peng_dp.rb
+
 TODO: Delete this and the text above, and describe your gem
 
 ## Installation
