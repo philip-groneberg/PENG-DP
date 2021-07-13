@@ -1,4 +1,5 @@
 #include <rice/rice.hpp>
+#include "cc/algorithms/count.h"
 
 using namespace Rice;
 
