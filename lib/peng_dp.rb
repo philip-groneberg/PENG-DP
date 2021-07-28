@@ -1,72 +1,61 @@
 require "peng_dp/version"
-require './sample_callbacks'
+require "sample_callbacks"
 
 module PengDp
   class Error < StandardError; end
   
-  def leftpad(chars, filter = ' ')
-    self.rjust(chars, filter)
+  def dp_sum(column_name, epsilon = 1.0, privacy_budget = 10)
+    if column_name.nil?
+      raise ArgumentError, "Column name can not be nil."
+    end
+    cb = CallbackHolder.new
+    cb.sum(self.pluck(column_name), epsilon, privacy_budget)
   end
 
-  def testing()
-    cb1 = CallbackHolder.new
-    cb2 = CallbackHolder.new
-    cb3 = CallbackHolder.new
-
-    cb1.register_callback(lambda do |param|
-      "Callback 1 got param #{param}"
-    end)
-
-    cb2.register_callback(lambda do |param|
-      "Callback 2 got param #{param}"
-    end)
-
-    cb3.register_callback method(:hello)
-
-    puts "Calling Callback 1"
-    puts cb1.fire_callback("Hello")
-
-    puts "Calling Callback 2"
-    puts cb2.fire_callback("World")
-
-    puts "Calling Callback 3"
-    puts cb3.fire_callback("Peng_DP")
+  def dp_average(column_name, epsilon = 1.0, privacy_budget = 10)
+    if column_name.nil?
+      raise ArgumentError, "Column name can not be nil."
+    end
+    cb = CallbackHolder.new
+    cb.mean(self.pluck(column_name), epsilon, privacy_budget)
   end
 
-  def hello(message)
-    "Hello #{message}"
+  def dp_count_above(column_name, limit = 0, epsilon = 1.0, privacy_budget = 10)
+    if column_name.nil?
+      raise ArgumentError, "Column name can not be nil."
+    end
+    cb = CallbackHolder.new
+    cb.count_above(self.pluck(column_name), limit, epsilon, privacy_budget)
+  end
+
+  def dp_count(column_name = :id, epsilon = 1.0, privacy_budget = 10)
+    if column_name.nil?
+      raise ArgumentError, "Column name can not be nil."
+    end
+    cb = CallbackHolder.new
+    cb.count(self.pluck(column_name), epsilon, privacy_budget)
+  end
+
+  def dp_maximum(column_name, epsilon = 1.0, privacy_budget = 10)
+    if column_name.nil?
+      raise ArgumentError, "Column name can not be nil."
+    end
+    cb = CallbackHolder.new
+    cb.max(self.pluck(column_name), epsilon, privacy_budget)
   end
 
 end
 
-class String
-  include PengDp
+# Include functions into ActiveRecord
+class ApplicationRecord < ActiveRecord::Base
+  self.abstract_class = true
+  extend PengDp
 end
 
-def hello(message)
-  "Hello #{message}"
-end
+# class String
+#   include PengDp
+# end
 
-cb1 = CallbackHolder.new
-cb2 = CallbackHolder.new
-cb3 = CallbackHolder.new
-
-cb1.register_callback(lambda do |param|
-  "Callback 1 got param #{param}"
-end)
-
-cb2.register_callback(lambda do |param|
-  "Callback 2 got param #{param}"
-end)
-
-cb3.register_callback method(:hello)
-
-puts "Calling Callback 1"
-puts cb1.fire_callback("Hello")
-
-puts "Calling Callback 2"
-puts cb2.fire_callback("World")
-
-puts "Calling Callback 3"
-puts cb3.fire_callback("Ruby")
-
+# class Array
+#   include PengDp
+# end

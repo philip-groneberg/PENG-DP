@@ -22,6 +22,26 @@ For rice functionality
 	ruby extconf.rb
 	make
 
+-------------------------------------------
+
+For protobuf
+
+To build and install the C++ Protocol Buffer runtime and the Protocol
+Buffer compiler (protoc) execute the following:
+
+	export PATH=${PATH}:/c/Ruby27-x64/msys64/mingw64/bin
+
+     ./configure
+     make
+     make check
+     sudo make install
+     sudo ldconfig # refresh shared library cache.
+
+Other commands
+
+	rm -f /var/lib/pacman/db.lck
+	ridk exec rm /var/lib/pacman/db.lck
+
 To run a ruby file
 
 	ruby peng_dp.rb

@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Philip Groneberg"]
   spec.email         = ["philip.groneberg@web.de"]
 
-  spec.summary       = %q{A gem that implements some basic differential privacy functions into ActiveRecords.} # %q{TODO: Write a short summary, because RubyGems requires one.}
-  # spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{A gem that implements basic differential privacy functions into ActiveRecords.} # %q{TODO: Write a short summary, because RubyGems requires one.}
+  spec.description   = %q{The gem implements the basic functionality of the google differential privacy library to be used through ActiveRecords.}
   # spec.homepage      = "Put your gem's website or public repo URL here."
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
@@ -25,8 +25,9 @@ Gem::Specification.new do |spec|
   end
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib","lib/**/*.def","lib/**/*.cpp","lib/**/*.o","lib/**/*.rb","lib/**/*.so","lib/*.def","lib/*.cpp","lib/*.o","lib/*.rb","lib/*.so"]
+  spec.require_paths = ["lib"]
 
   # spec.add_dependency 'RubyInline', '~> 3.12', '>= 3.12.5'
-  spec.add_dependency 'rice'
+  spec.add_dependency 'rice', '~> 4.0', '>= 4.0.2'
+  spec.extensions = %w[lib/extconf.rb]
 end
