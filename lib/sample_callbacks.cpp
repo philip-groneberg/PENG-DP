@@ -12,6 +12,21 @@ namespace
     public:
 
     int64_t Sum(const std::vector<double>& values, double epsilon, double privacy_budget) {
+      // if (privacy_budget <= 0) {
+      //   return absl::InvalidArgumentError("Not enough privacy budget.");
+      // }
+      // ASSIGN_OR_RETURN(std::unique_ptr<BoundedSum<int>> sum_algorithm,
+      //                  BoundedSum<int>::Builder()
+      //                      .SetEpsilon(epsilon)
+      //                      .SetLower(0)
+      //                      .SetUpper(150)
+      //                      .Build());
+      // for (double values : values) {
+      //   sum_algorithm->AddEntry(values);
+      // }
+      // return sum_algorithm->PartialResult(privacy_budget);
+      // ------------------------ Testing functionality code --------------------------
+      // Uncomment code above and delete code below when dependency issues are resolved
       int sum = 0;
       for (double value : values) {
         sum += value;
@@ -21,6 +36,17 @@ namespace
     }
 
     int64_t Mean(const std::vector<double>& values, double epsilon, double privacy_budget) {
+      // if (privacy_budget <= 0) {
+      //   return absl::InvalidArgumentError("Not enough privacy budget.");
+      // }
+      // ASSIGN_OR_RETURN(std::unique_ptr<BoundedMean<int>> mean_algorithm,
+      //                  BoundedMean<int>::Builder().SetEpsilon(epsilon).Build());
+      // for (double value : values) {
+      //   mean_algorithm->AddEntry(value);
+      // }
+      // return mean_algorithm->PartialResult(privacy_budget);
+      // ------------------------ Testing functionality code --------------------------
+      // Uncomment code above and delete code below when dependency issues are resolved
       int sum = 0;
       for (double value : values) {
         sum += value;
@@ -30,6 +56,20 @@ namespace
     }
 
     int64_t CountAbove(const std::vector<double>& values, double limit, double epsilon, double privacy_budget) {
+      // if (privacy_budget <= 0) {
+      //   return absl::InvalidArgumentError("Not enough privacy budget.");
+      // }
+      // ASSIGN_OR_RETURN(std::unique_ptr<Count<std::string>> count_algorithm,
+      //                  Count<std::string>::Builder().SetEpsilon(epsilon).Build());
+
+      // for (double value : values) {
+      //   if (value > limit) {
+      //     count_algorithm->AddEntry(value);
+      //   }
+      // }
+      // return count_algorithm->PartialResult(privacy_budget);
+      // ------------------------ Testing functionality code --------------------------
+      // Uncomment code above and delete code below when dependency issues are resolved
       int count = 0;
       for (double value : values) {
         if (value > limit) {
@@ -43,23 +83,18 @@ namespace
     // Epsilon is a configurable parameter. A lower value means more privacy but
     // less accuracy.
     int64_t Count(const std::vector<double>& values, double epsilon, double privacy_budget) {
-      // Construct the Count object to run on double inputs.
-      // std::unique_ptr<differential_privacy::Count<double>> count =
-      //    differential_privacy::Count<double>::Builder().SetEpsilon(epsilon)
-      //                                                  .Build()
-      //                                                  .ValueOrDie();
-
-      // Compute the count and get the result.
-      // base::StatusOr<differential_privacy::Output> result =
-      //    count->Result(values.begin(), values.end());
-      // if (!result.ok()) {
-        // return 0;
+      // if (privacy_budget <= 0) {
+      //   return absl::InvalidArgumentError("Not enough privacy budget.");
       // }
+      // ASSIGN_OR_RETURN(std::unique_ptr<Count<std::string>> count_algorithm,
+      //                  Count<std::string>::Builder().SetEpsilon(epsilon).Build());
 
-      // GetValue can be used to extract the value from an Output protobuf. For
-      // count, this is always an int64_t value.
-      // return differential_privacy::GetValue<int64_t>(result.ValueOrDie());
-      // return differential_privacy::GetValue<int64_t>((count->Result(values.begin(), values.end())).ValueOrDie());
+      // for (double value : values) {
+      //     count_algorithm->AddEntry(value);
+      // }
+      // return count_algorithm->PartialResult(privacy_budget);
+      // ------------------------ Testing functionality code --------------------------
+      // Uncomment code above and delete code below when dependency issues are resolved
       int count = 0;
       for (double value : values) {
         ++count;
@@ -69,6 +104,18 @@ namespace
     }
 
     int64_t Max(const std::vector<double>& values, double epsilon, double privacy_budget) {
+      // ASSIGN_OR_RETURN(std::unique_ptr<continuous::Max<int>> max_algorithm,
+      //                  continuous::Max<int>::Builder()
+      //                      .SetEpsilon(epsilon)
+      //                      .SetLower(0)
+      //                      .SetUpper(150)
+      //                      .Build());
+      // for (double value : values) {
+      //   max_algorithm->AddEntry(value);
+      // }
+      // return max_algorithm->PartialResult(privacy_budget);
+      // ------------------------ Testing functionality code --------------------------
+      // Uncomment code above and delete code below when dependency issues are resolved
       int max = 0;
       for (double value : values) {
         if (value > max) {
