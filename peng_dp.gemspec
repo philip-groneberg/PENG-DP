@@ -3,10 +3,10 @@ require_relative 'lib/peng_dp/version'
 Gem::Specification.new do |spec|
   spec.name          = "peng_dp"
   spec.version       = PengDp::VERSION
-  spec.authors       = ["Philip Groneberg"]
-  spec.email         = ["philip.groneberg@web.de"]
+  spec.authors       = ["Kavin Hertwig", "Zaeem Athar", "Philip Groneberg"]
+  spec.email         = ["p.groneberg@campus.tu-berlin.de"]
 
-  spec.summary       = %q{A gem that implements basic differential privacy functions into ActiveRecords.} # %q{TODO: Write a short summary, because RubyGems requires one.}
+  spec.summary       = %q{A gem that implements basic differential privacy functions into ActiveRecords.}
   spec.description   = %q{The gem implements the basic functionality of the google differential privacy library to be used through ActiveRecords.}
   # spec.homepage      = "Put your gem's website or public repo URL here."
   spec.license       = "MIT"
@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   # spec.metadata["homepage_uri"] = spec.homepage
-  # spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
+  # spec.metadata["source_code_uri"] = "https://github.com/philip-groneberg/PENG-DP"
   # spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
 
   # Specify which files should be added to the gem when it is released.
@@ -27,7 +27,6 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  # spec.add_dependency 'RubyInline', '~> 3.12', '>= 3.12.5'
   spec.add_dependency 'rice', '~> 4.0', '>= 4.0.2'
   spec.extensions = %w[lib/extconf.rb]
 end
